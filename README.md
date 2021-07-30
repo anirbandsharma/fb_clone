@@ -3,7 +3,7 @@
 facebook clone with html and css and javascript (not responsive - yet)
 
 includes:
--cloned homepage with hover animations and dropdown menus.
+-cloned homepage with hover animations and dropdown menus. /n
 -status section, post input section and feeds.
 -profile page
 -dark mode
