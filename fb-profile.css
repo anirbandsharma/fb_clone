@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+h1,h2,h3,h4,h5,p,span{pointer-events: none;}
+button{
+    border:none;
+    background-color: transparent;
+    padding: 0;
+}
+body{
+    background-color: rgb(227, 233, 235);
+}
+.material-icons{
+    color: rgb(48, 48, 48);
+}
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 1px 5px rgb(209, 209, 209);
+}
+.nav{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    justify-content: space-between;
+}
+.left-nav{
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+.left-nav .search-bar{
+    width: 70%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(227, 233, 235);
+    border-radius: 2rem;
+    padding: 0 5px;
+}
+.search-bar input{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 38px;
+    margin: 5px;
+}
+.feed-nav{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    text-align: center;
+}
+.feed-nav .icon{
+    width: 100%;
+    height: 100%;
+    font-size: 38px;
+}
+.feed-nav .icon span{
+    font-size: 30px;
+}
+.feed-nav .icon:hover:not(.active){
+    background-color: rgba(221, 221, 221, 0.63);
+    border-radius: 1rem;
+}
+.right-nav{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+}
+.pro{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(34, 129, 192, 0.205);
+    border-radius: 3rem;
+    color: rgb(5, 119, 185);
+    padding: 0 10px 0 0;
+}
+.avatar{
+    width: 36px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.right-nav span{
+    font-size: 30px;
+    padding: 10px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: absolute;
+    top: 52px;
+    right: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 5px;
+    width: 25%;
+    box-shadow: 0 0 5px rgb(153, 153, 153);
+    border-radius: 0.5rem;
+  }
+  .modal-content .avatar{
+      width: 55px;
+      padding: 0;
+      margin: 0 15px 0 0;
+  }
+  .modal-options{
+      display: flex;
+      align-items: center;
+      padding: 15px 5px;
+  }
+  .modal-options:hover{
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 0.5rem;
+}
+  .modal-options span{
+      font-size: 30px;
+      padding: 0 10px;
+  }
+  .modal-options h3{
+    font-size: 16px;
+  }
+  .modal-options h4{
+    font-size: 15px;
+  }
+  .modal-options p{
+    font-size: 14px;
+    color: gray;
+  }
+
+  /* header */
+  .header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255), rgb(90, 47, 47));
+      height: 55vh;
+      text-align: center;
+      position: relative;
+  }
+  .cover-photo{
+      width: 65%;
+      height: 42vh;
+  }
+  .cover-photo img{
+      width: 100%;
+      height: inherit;
+      border-radius:0 0 0.5rem 0.5rem;
+  }
+  .profile{
+      position: absolute;
+      bottom: 5px;
+  }
+  .profile img{
+    border: 5px solid white;
+      width: 170px;
+      border-radius: 50%;
+  }
+  .header-line{
+      width: 61%;
+      height: 1px;
+      background-color: gray;
+      position: absolute;
+      bottom: 0;
+  }
+
+  /* feed */
+  .profile-nav{
+      width: 100%;
+      height: 7vh;
+      background-color: white;
+      box-shadow: 1px 0px 0px rgb(190, 190, 190);
+      position: sticky;
+      top: 55px;
+  }
+  .profile-nav-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 33vh;
+  }
+  .profile-nav-container-left{
+    display: flex;
+  }
+  .profile-nav-container-right{
+    display: flex;
+  }
+  .profile-item{
+      margin: 0 10px;
+      width: 70px;
+      height: 6.5vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: gray;
+  }
+  .active{
+      color: rgb(0, 132, 255);
+      box-shadow: 0 3px 0 rgb(0, 132, 255);
+  }
+
+  /* profile-body */
+  .profile-body{
+      background-color: grey;
+      height: 1000px;
+  }

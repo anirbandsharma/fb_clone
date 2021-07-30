@@ -1,0 +1,411 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+h1,h2,h3,h4,h5,p,span{pointer-events: none;}
+button{
+    border:none;
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+}
+body{
+    background-color: rgb(227, 233, 235);
+}
+.material-icons{
+    color: rgb(48, 48, 48);
+}
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 1px 5px rgb(209, 209, 209);
+}
+.nav{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    justify-content: space-between;
+}
+.left-nav{
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+.left-nav .search-bar{
+    width: 70%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(227, 233, 235);
+    border-radius: 2rem;
+    padding: 0 5px;
+}
+.search-bar input{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 38px;
+    margin: 5px;
+}
+.feed-nav{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    text-align: center;
+}
+.feed-nav .icon{
+    width: 100%;
+    height: 100%;
+    font-size: 38px;
+}
+.feed-nav .icon span{
+    font-size: 30px;
+}
+.feed-nav .active{
+    box-shadow: 0px 2px 0px rgb(24, 128, 226);
+    color: rgb(24, 128, 226);
+}
+.feed-nav .active span{
+    color: rgb(24, 128, 226);
+}
+.feed-nav .icon:hover:not(.active){
+    background-color: rgba(221, 221, 221, 0.63);
+    border-radius: 1rem;
+}
+.right-nav{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+}
+.pro{
+    display: flex;
+    align-items: center;
+}
+.avatar{
+    width: 36px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.right-nav span{
+    font-size: 30px;
+    padding: 10px;
+}
+
+/* Main-Content */
+.main-content{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.left-sidebar{
+    position: sticky;
+    top: 60px;
+    align-self: flex-start;
+    flex:1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.left-content{
+    display: flex;
+    align-items: center;
+}
+.left-content:hover{
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 0.5rem;
+}
+.left-content span{
+    font-size: 35px;
+    margin: 10px;
+    color: rgb(12, 72, 121);
+}
+.feed{
+    flex: 2;
+    padding: 10px 40px;
+}
+.status{
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 30px;
+}
+.status-card{
+    width: 100px;
+    height: 180px;
+    margin: 5px;
+    position: relative;
+    transition: 0.5s;
+}
+.status-card img{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 0.5rem;
+}
+.status-card:hover{
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+.status-card::after{
+    content: "";
+    width: 100px;
+    height: 180px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.295), rgba(255, 255, 255, 0.295));
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0.5rem;
+}
+
+
+
+
+.post{
+    width: 100%;
+    height: 130px;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.post-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+.post-top .avatar{
+    margin: 0;
+}
+.post-input{
+    width: 75vh;
+    border: none;
+    background-color: rgb(227, 233, 235);
+    border-radius: 2rem;
+    height: 36px;
+}
+.line{
+    width: 90%;
+    height: 1px;
+    background-color: rgb(196, 196, 196);
+}
+.post-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 90px;
+}
+.post-btn{
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* feed */
+.feed-comtainer{
+    display: flex;
+    flex-direction: column;
+}
+.feed-card{
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin: 10px 0;
+}
+.feed-card-title{
+    display: flex;
+    align-items: center;
+}
+.feed-card-title h4{
+    font-size: 14px;
+}
+.feed-card-title p{
+    font-size: 12px;
+    color: gray;
+}
+.feed-post{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.counters{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+.like{
+    display: flex;
+    align-items: center;
+    font-size: small;
+    justify-content: center;
+    color: gray;
+}
+.like span{
+    margin: 5px;
+    color: gray;
+}
+
+/* right-sidebar */
+.right-sidebar{
+    flex: 1;
+    width: 100%;
+    position: sticky;
+    top: 60px;
+    align-self: flex-start;
+}
+.birthday{
+    background-color: white;
+    width: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 0 3px rgb(153, 153, 153);
+}
+.birthday-head{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0;
+}
+.birthday-title{
+    display: flex;
+}
+.birthday p{
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.contacts{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px 0;
+}
+.contacts-head{
+    display: flex;
+    justify-content: space-between;
+}
+.contacts-head-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+.con{
+    margin: 0 5px;
+}
+.person{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.person::after{
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(1, 180, 1);
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: absolute;
+    top: 52px;
+    right: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 5px;
+    width: 25%;
+    box-shadow: 0 0 5px rgb(153, 153, 153);
+    border-radius: 0.5rem;
+  }
+  .modal-content .avatar{
+      width: 55px;
+      padding: 0;
+      margin: 0 15px 0 0;
+  }
+  .modal-options button{
+    display: flex;
+    align-items: center;
+    padding: 15px 5px;
+    text-align: start;
+}
+.modal-options .btn-content{
+    display: flex;
+    align-items: center;
+}
+.modal-options .arrow{
+    justify-content: space-between;
+}
+  .modal-options{
+    display: flex;
+    align-items: center;
+    animation: ex 0.5s ease-in;
+}
+  .modal-options button:hover:not(.active){
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 0.5rem;
+}
+  .modal-options button span{
+      font-size: 30px;
+      padding: 0 10px;
+  }
+  .modal-options h3{
+    font-size: 16px;
+  }
+  .modal-options h4{
+    font-size: 15px;
+  }
+  .modal-options p{
+    font-size: 14px;
+    color: gray;
+  }
+  #myBtn3{
+      width: inherit;
+      padding: 10px;
+  }
+  #myBtn3:hover{
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 50%;
+}
+@keyframes ex {
+    0% {transform: translateX(100%); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
