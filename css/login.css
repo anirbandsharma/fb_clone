@@ -85,6 +85,9 @@ main{
     padding: 14px;
     margin:  14px 0; 
 }
+.card button:hover{
+    background-color: rgb(40, 151, 18);
+}
 
 /* footer */
 footer{
