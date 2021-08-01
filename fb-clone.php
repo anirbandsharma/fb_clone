@@ -8,7 +8,9 @@ $email = $_SESSION['email'];
 include './connect.php';
 $sql = mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
 $row = mysqli_fetch_array($sql);
-$ss_id = $row1["s_id"];
+$id = $row["id"];
+$fname = $row["f_name"];
+$lname = $row["l_name"];
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +61,7 @@ $ss_id = $row1["s_id"];
             </div>
             <div class="right-nav">
                 <div class="pro" onclick="location.href='fb-profile.html';"><img src="images/avatar.jpg" class="avatar">
-                    <p>Anirban</p>
+                    <p><?php echo $fname; ?></p>
                 </div>
                 <button>
                     <span class="material-icons">apps</span>
@@ -83,7 +85,7 @@ $ss_id = $row1["s_id"];
                         <button onclick="location.href='fb-profile.html';">
                             <img src="images/avatar.jpg" alt="" class="avatar">
                             <div class="text">
-                                <h3><b>Anirban D Sharma</b></h3>
+                                <h3><b><?php echo $fname . " " . $lname; ?></b></h3>
                                 <p>See your profile.</p>
                             </div>
                         </button>
@@ -142,7 +144,7 @@ $ss_id = $row1["s_id"];
                     </div>
 
                     <div class="modal-options">
-                        <button onclick="location.href='./login.html';">
+                        <button onclick="location.href='./logout.php';">
                             <span class="material-icons">
                                 logout
                             </span>
@@ -190,7 +192,7 @@ $ss_id = $row1["s_id"];
         <div class="left-sidebar">
             <div class="left-content" onclick="location.href='fb-profile.html';">
                 <img src="images/avatar.jpg" class="avatar">
-                <h4>Anirban D Sharma</h4>
+                <h4><?php echo $fname . " " . $lname; ?></h4>
             </div>
             <div class="left-content" onclick="location.href='https://www.mygov.in/covid-19';">
                 <span class="material-icons">
@@ -300,7 +302,7 @@ $ss_id = $row1["s_id"];
             <div class="post">
                 <div class="post-top">
                     <img src="images/avatar.jpg" class="avatar">
-                    <div class="post-input" id="myBtn-post">What's on your mind, Anirban?</div>
+                    <div class="post-input" id="myBtn-post">What's on your mind, <?php echo $fname; ?>?</div>
                 </div>
                 <center>
                     <div class="line"></div>
@@ -336,10 +338,10 @@ $ss_id = $row1["s_id"];
                     <div class="line"></div>
                     <div class="profile">
                         <img src="./images/avatar.jpg" class="avatar" alt="">
-                        <h5>Anirban D Sharma</h5>
+                        <h5><?php echo $fname . " " . $lname; ?></h5>
                     </div>
-                    <form action="post.php" method="POST">
-                        <textarea name="post" placeholder="What's on your mind, Anirban?"></textarea>
+                    <form action="post.php?id=<?php echo $id; ?>" method="POST">
+                        <textarea name="post_detail" placeholder="What's on your mind, <?php echo $fname; ?>?"></textarea>
                         <input type="submit" class="post-submit" value="Post">
                     </form>
                 </div>
@@ -348,16 +350,26 @@ $ss_id = $row1["s_id"];
 
             <div class="feed-container">
 
+            <?php 
+            $query = 'SELECT * FROM posts INNER JOIN users ON posts.id = users.id order by posts.post_id DESC';
+            $result = mysqli_query($con, $query);
+            while ($row = mysqli_fetch_array($result)) {
+                $name = $row["f_name"]." ".$row["l_name"];
+                $post_detail = $row["post_detail"];
+                $time = $row["upload_time"];
+
+                echo '
+
                 <div class="feed-card">
                     <div class="feed-card-title">
                         <img src="images/android.jpeg" alt="" class="avatar">
                         <div class="name">
-                            <h4>Android Authority</h4>
-                            <p>26 July at 11:47</p>
+                            <h4>' . $name . '</h4>
+                            <p>' . $time . '</p>
                         </div>
                     </div>
-                    <p>Oppo Watch 2 leaks ahead of July 27 launch, but will it get the new Wear OS 3?</p>
-                    <img src="images/android-post.jpeg" alt="" class="feed-post">
+                    <p>' . $post_detail . '</p>
+                    <!-- <img src="images/android-post.jpeg" alt="" class="feed-post"> -->
                     <div class="counters">
                         <div class="like">
                             <span class="material-icons" style="color: rgb(62, 165, 233); font-size: 17px;">
@@ -393,6 +405,8 @@ $ss_id = $row1["s_id"];
                         </div>
                     </div>
                 </div>
+            ';
+            }?>
 
                 <div class="feed-card">
                     <div class="feed-card-title">

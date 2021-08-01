@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2021 at 08:24 PM
+-- Generation Time: Aug 01, 2021 at 09:41 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `fb_clone`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `post_id` int(100) NOT NULL,
+  `id` int(100) NOT NULL,
+  `post_detail` longtext NOT NULL,
+  `upload_time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `id`, `post_detail`, `upload_time`) VALUES
+(1, 1, 'asdasdsa', '2021-08-02 00:33:12'),
+(2, 1, 'Hello.. this is a fakeboook post.. thank you', '2021-08-02 00:33:48'),
+(3, 2, 'ok ok testing.. gooood', '2021-08-02 00:43:30'),
+(6, 2, 'whats up good people? mark zuk who ?', '2021-08-02 00:46:25');
 
 -- --------------------------------------------------------
 
@@ -50,6 +73,13 @@ INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `dob`, `gend
 --
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -58,6 +88,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
