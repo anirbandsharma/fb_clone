@@ -189,11 +189,14 @@ nav{
     margin: 0;
 }
 .post-input{
-    width: 75vh;
+    width: 70vh;
     border: none;
     background-color: rgb(227, 233, 235);
     border-radius: 2rem;
     height: 36px;
+    padding: 5px 15px;
+    color: grey;
+    cursor: pointer;
 }
 .line{
     width: 90%;
@@ -210,6 +213,34 @@ nav{
     display: flex;
     align-items: center;
 }
+
+/* post-modal */
+.modal-post {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 55px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(255, 255, 255, 0.74);
+  }
+  
+  /* Modal Content */
+  .modal-content-post {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    background-color: #fefefe;
+    margin: auto;
+    padding: 5px;
+    width: 35%;
+    height: 50%;
+    box-shadow: 0 0 5px rgb(153, 153, 153);
+    border-radius: 0.5rem;
+  }
 
 
 
@@ -346,6 +377,7 @@ nav{
   
   /* Modal Content */
   .modal-content {
+    z-index: 20; /* Sit on top */
     position: absolute;
     top: 52px;
     right: 10px;
