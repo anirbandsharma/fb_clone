@@ -22,6 +22,7 @@
  }
  btnPost.onclick = function () {
     modalPost.style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
  // When the user clicks anywhere outside of the modal, close it
@@ -34,5 +35,6 @@
      }
      if (event.target == modalPost) {
         modalPost.style.display = "none";
+        document.body.style.overflow = "auto";
     }
  }
