@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!$_SESSION['email']) {
+    header("LOCATION: index.php");
+}
+$email = $_SESSION['email'];
+
+include './connect.php';
+$sql = mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
+$row = mysqli_fetch_array($sql);
+$ss_id = $row1["s_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

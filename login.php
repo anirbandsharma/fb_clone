@@ -11,7 +11,7 @@ $result=mysqli_query($con,"select * from users where email = '$email'");
 	if($row['password']==$password)
 	{
 		$_SESSION['email']=$email;
- 		header("Location:fb-clone.html");
+ 		header("Location:fb-clone.php");
  	}
  	else
  	{
