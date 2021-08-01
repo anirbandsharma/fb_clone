@@ -16,9 +16,9 @@
         </div>
         <div class="login">
             <div class="card">
-                <form>
-                    <input type="email" placeholder="Email address or phone number">
-                    <input type="password" placeholder="Password">
+                <form action="login.php" method="POST">
+                    <input type="email" name="email" placeholder="Email address or phone number">
+                    <input type="password" name="password" placeholder="Password">
                     <input type="submit" class="login-btn" value="Log In">
                 </form>
                 <div class="forgot"><a href="#">Forgotten password?</a></div>
@@ -42,18 +42,18 @@
             <div class="line"></div>
             <form action="signup.php" method="POST">
                 <div class="row">
-                   <input type="text" placeholder="First name">
-                   <input type="text" placeholder="Surname">
+                   <input type="text" name="f_name" placeholder="First name">
+                   <input type="text" name="l_name" placeholder="Surname">
                 </div>
                 <div class="row">
-                    <input type="email" placeholder="Email address">
+                    <input type="email" name="email" placeholder="Email address">
                 </div>
                 <div class="row">
-                    <input type="password" placeholder="New password">
+                    <input type="password" name="password" placeholder="New password">
                 </div>
                 <label class="title" for="date">Date of birth</label>
                 <div class="row">
-                    <input type="date" placeholder="dob">
+                    <input type="date" name="dob" placeholder="dob">
                 </div>
                 <label class="title" for="radio">Gender</label>
                 <div class="row">
