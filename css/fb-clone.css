@@ -322,6 +322,35 @@ nav{
     color: gray;
 }
 
+.comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.comment .post-input{
+    margin: 5px 0;
+}
+.comment form input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+}
+.comment .line{
+    margin: 5px 0;
+}
+.comment-read{
+    display: flex;
+    align-items:center;
+    margin: 5px 5px;
+}
+.comment-detail{
+    background-color: rgb(227, 233, 235);
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
 /* right-sidebar */
 .right-sidebar{
     flex: 1;
