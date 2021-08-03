@@ -314,7 +314,7 @@ $lname = $row["l_name"];
                         </span>
                         <h4>Live Video</h4>
                     </div>
-                    <div class="post-btn">
+                    <div class="post-btn" onclick="fileupload()">
                         <span class="material-icons" style="color: rgb(32, 167, 32);">
                             collections
                         </span>
@@ -342,8 +342,9 @@ $lname = $row["l_name"];
                         <img src="./images/avatar.jpg" class="avatar" alt="">
                         <h5><?php echo $fname . " " . $lname; ?></h5>
                     </div>
-                    <form action="post.php?id=<?php echo $id; ?>" method="POST">
+                    <form method="POST" enctype="multipart/form-data" action="post.php?id=<?php echo $id; ?>" >
                         <textarea name="post_detail" placeholder="What's on your mind, <?php echo $fname; ?>?"></textarea>
+                        <input type="file" name="file" id="file">
                         <input type="submit" class="post-submit" value="Post">
                     </form>
                 </div>
@@ -362,22 +363,37 @@ $lname = $row["l_name"];
                     $name = $row["f_name"] . " " . $row["l_name"];
                     $post_detail = $row["post_detail"];
                     $time = $row["upload_time"];
+                    $photo = $row["photo"];
+                    $piece = explode(".", $photo);
+                    $ext = end($piece);
 
                     $query2 = "SELECT * FROM (comments INNER JOIN posts ON comments.post_id = posts.post_id) INNER JOIN users ON comments.id = users.id WHERE posts.post_id=$post_id ORDER BY comments.comment_time ASC";
                     $result2 = mysqli_query($con, $query2);
                     
+                    $count = mysqli_query($con, "SELECT COUNT(com_id) FROM comments WHERE comments.post_id=$post_id");
+                    $comment_count = mysqli_fetch_array($count);
+
                     echo '
 
                 <div class="feed-card">
                     <div class="feed-card-title">
                         <img src="images/android.jpeg" alt="" class="avatar">
                         <div class="name">
-                            <h4>' . $name . '</h4>
+                            <h4>' . $ext . '</h4>
                             <p>' . $time . '</p>
                         </div>
                     </div>
                     <p>' . $post_detail . '</p>
-                    <!-- <img src="images/android-post.jpeg" alt="" class="feed-post"> -->
+                    ';
+                    $allowed = array('jpg', 'jpeg', 'png', 'uploads/');
+                    if (in_array($ext, $allowed)) {
+                        echo '
+                    <img src="'. $photo .'" alt="" class="feed-post">
+                        ';} else { echo '
+                            <video width="100%" controls>
+                            <source src="'. $photo .'" type="video/mp4">
+                            </video>
+                    ';} echo'
                     <div class="counters">
                         <div class="like">
                             <span class="material-icons" style="color: rgb(62, 165, 233); font-size: 17px;">
@@ -386,7 +402,7 @@ $lname = $row["l_name"];
                             <p>503</p>
                         </div>
                         <div class="like">
-                            <p>103 comments 26 shares</p>
+                            <p>'. $comment_count[0] .' comments 26 shares</p>
                         </div>
                     </div>
                     <center>
@@ -420,7 +436,7 @@ $lname = $row["l_name"];
                             <img src="images/avatar.jpg" class="avatar">
                             <div class="post-input">
                                 <form action="comment.php?post_id='. $post_id . '&id=' . $id . '" method="POST">
-                                    <input type="text" name="comment" placeholder="Write a comment...">
+                                    <input type="text" name="comment" placeholder="Write a comment..." autocomplete="off">
                                 </form>
                             </div>
                         </div>
@@ -604,6 +620,13 @@ $lname = $row["l_name"];
         });
     </script>
 
+<script>
+    function fileupload(){
+        document.getElementById('file').click();
+        document.getElementById('myModal-post').style.display = "block";
+        myBtn-post
+    }
+</script>
 </body>
 
 </html>

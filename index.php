@@ -11,8 +11,8 @@
 
     <main>
         <div class="text">
-            <h1>facebook</h1>
-            <p>Facebook helps you connect and share with the people in your life.</p>
+            <h1>fakebook</h1>
+            <p>Fakebook helps you connect and share with the people in your life.</p>
         </div>
         <div class="login">
             <div class="card">

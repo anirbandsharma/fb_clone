@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 02, 2021 at 07:40 PM
+-- Generation Time: Aug 03, 2021 at 08:46 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -41,7 +41,11 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`com_id`, `post_id`, `id`, `comment`, `comment_time`) VALUES
 (5, 7, 1, 'Stay tuned...', '2021-08-02 23:09:51'),
-(6, 7, 2, 'Excited!!', '2021-08-02 23:10:15');
+(6, 7, 2, 'Excited!!', '2021-08-02 23:10:15'),
+(7, 8, 2, 'test coment', '2021-08-03 22:30:14'),
+(8, 22, 2, 'wow', '2021-08-03 23:37:22'),
+(9, 21, 1, 'sad', '2021-08-03 23:39:43'),
+(10, 22, 1, 'nic pic dr', '2021-08-03 23:39:55');
 
 -- --------------------------------------------------------
 
@@ -53,15 +57,18 @@ CREATE TABLE `posts` (
   `post_id` int(100) NOT NULL,
   `id` int(100) NOT NULL,
   `post_detail` longtext NOT NULL,
-  `upload_time` datetime NOT NULL DEFAULT current_timestamp()
+  `upload_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `id`, `post_detail`, `upload_time`) VALUES
-(7, 1, 'Hello everyone.. welcome to fakebook. Leave a post or comment on other posts. Thank you.. More updates coming soon!', '2021-08-02 23:09:41');
+INSERT INTO `posts` (`post_id`, `id`, `post_detail`, `upload_time`, `photo`) VALUES
+(7, 1, 'Hello everyone.. welcome to fakebook. Leave a post or comment on other posts. Thank you.. More updates coming soon!', '2021-08-02 23:09:41', NULL),
+(21, 2, 'post without photo', '2021-08-03 23:36:54', 'uploads/'),
+(22, 2, 'post with photo', '2021-08-03 23:37:12', 'uploads/1.png');
 
 -- --------------------------------------------------------
 
@@ -120,13 +127,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `com_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
