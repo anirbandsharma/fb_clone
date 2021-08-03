@@ -8,3 +8,5 @@ includes:
 -status section, post input section and feeds.
 -profile page
 -dark mode
+-photo/video upload
+-comments
