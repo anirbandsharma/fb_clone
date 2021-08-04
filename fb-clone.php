@@ -354,7 +354,7 @@ $lname = $row["l_name"];
             <div class="feed-container">
 
                 <?php
-                $query = 'SELECT * FROM posts INNER JOIN users ON posts.id = users.id order by posts.post_id DESC';
+                $query = 'SELECT * FROM posts INNER JOIN users ON posts.id = users.id order by posts.post_id DESC LIMIT 5';
                 $result = mysqli_query($con, $query);
                 
 
@@ -366,6 +366,7 @@ $lname = $row["l_name"];
                     $photo = $row["photo"];
                     $piece = explode(".", $photo);
                     $ext = end($piece);
+                    $msgID = $post_id;
 
                     $query2 = "SELECT * FROM (comments INNER JOIN posts ON comments.post_id = posts.post_id) INNER JOIN users ON comments.id = users.id WHERE posts.post_id=$post_id ORDER BY comments.comment_time ASC";
                     $result2 = mysqli_query($con, $query2);
@@ -375,11 +376,11 @@ $lname = $row["l_name"];
 
                     echo '
 
-                <div class="feed-card">
+                <div class="feed-card" data-id="'. $msgID .'">
                     <div class="feed-card-title">
                         <img src="images/android.jpeg" alt="" class="avatar">
                         <div class="name">
-                            <h4>' . $ext . '</h4>
+                            <h4>' . $name . '</h4>
                             <p>' . $time . '</p>
                         </div>
                     </div>
@@ -461,8 +462,8 @@ $lname = $row["l_name"];
                 </div>
             ';
                 } ?>
-
-                <div class="feed-card">
+     <div id="msg_loader"><img src="bigLoader.gif"></div>
+                <!-- <div class="feed-card">
                     <div class="feed-card-title">
                         <img src="images/android.jpeg" alt="" class="avatar">
                         <div class="name">
@@ -471,7 +472,7 @@ $lname = $row["l_name"];
                         </div>
                     </div>
                     <p>Oppo Watch 2 leaks ahead of July 27 launch, but will it get the new Wear OS 3?</p>
-                    <!-- <img src="images/android-post.jpeg" alt="" class="feed-post"> -->
+                     <img src="images/android-post.jpeg" alt="" class="feed-post"> 
                     <div class="counters">
                         <div class="like">
                             <span class="material-icons" style="color: rgb(62, 165, 233); font-size: 17px;">
@@ -537,7 +538,7 @@ $lname = $row["l_name"];
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                
             </div>
@@ -627,6 +628,33 @@ $lname = $row["l_name"];
         myBtn-post
     }
 </script>
+
+<!-- loading -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                        var msg_id = $(".feed-card:last").data("id");
+                        $("#msg_loader").show();
+                        $.ajax({
+                            type: "POST",
+                            url: "fetch.php",
+                            data: {msg_id: msg_id},
+                            cache: false,
+                            success: function (data) {
+                                //Insert data after the message_box 
+                                $(".feed-card:last").after(data);
+                                $("#msg_loader").hide();
+                            }
+                        });
+
+                    }
+                });
+            });
+        </script>
+
 </body>
 
 </html>

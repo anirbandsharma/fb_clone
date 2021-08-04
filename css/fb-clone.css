@@ -24,7 +24,7 @@ nav{
     box-shadow: 0 1px 5px rgb(209, 209, 209);
 }
 .nav{
-    width: 100%;
+    width: (100%-10px);
     height: 55px;
     display: flex;
     align-items: center;
@@ -514,6 +514,11 @@ nav{
         left: 50%;
         transform: translate(-50%,-80%);
         padding: 15px;
+        width: 90%;
+      }
+      .modal-content {
+        top: 52px;
+        left: 10px;
         width: 90%;
       }
 }    
