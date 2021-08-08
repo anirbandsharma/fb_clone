@@ -13,6 +13,11 @@ button{
 body{
     background-color: rgb(227, 233, 235);
 }
+#msg_loader{
+    background-color: rgb(171, 198, 230);
+    border-radius: 0.5rem;
+    padding: 3px;
+}
 .material-icons{
     color: rgb(48, 48, 48);
 }
@@ -315,7 +320,7 @@ nav{
     align-items: center;
     font-size: small;
     justify-content: center;
-    color: gray;
+    color: rgb(128, 128, 128);
 }
 .like span{
     margin: 5px;
@@ -502,12 +507,13 @@ nav{
 
 /* media query */  
 @media screen and (max-width: 600px) {
-    .left-sidebar, .right-sidebar, .left-nav, .feed-nav{
+    .left-sidebar, .right-sidebar, .left-nav, .feed-nav, .status{
         display: none;
     }
     .feed{
         flex: 1;
         padding: 0;
+        width: 90%;
     }
     .modal-content-post {
         top: 50%;
@@ -517,8 +523,8 @@ nav{
         width: 90%;
       }
       .modal-content {
-        top: 52px;
-        left: 10px;
-        width: 90%;
-      }
-}    
+    top: 52px;
+    left: 10px;
+    width: 90%;
+  }
+} 
