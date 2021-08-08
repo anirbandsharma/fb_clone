@@ -4,8 +4,6 @@
 
  var modal_notification = document.getElementById("myModal-notification");
 
- var modalPost = document.getElementById("myModal-post");
-
 
  // Get the button that opens the modal
  var btn = document.getElementById("myBtn");
@@ -14,8 +12,6 @@
 
  var btn_notification = document.getElementById("myBtn-notification");
  
- var btnPost = document.getElementById("myBtn-post");
-
 
  // When the user clicks the button, open the modal 
  btn.onclick = function () {
@@ -34,11 +30,6 @@ btn_notification.onclick = function () {
     modal_notification.style.display = "block";
 }
 
- btnPost.onclick = function () {
-    modalPost.style.display = "block";
-    document.body.style.overflow = "hidden";
-}
-
  // When the user clicks anywhere outside of the modal, close it
  window.onclick = function (event) {
      if (event.target == modal) {
@@ -49,9 +40,5 @@ btn_notification.onclick = function () {
      }
      if (event.target == modal_notification) {
         modal_notification.style.display = "none";
-    }
-     if (event.target == modalPost) {
-        modalPost.style.display = "none";
-        document.body.style.overflow = "auto";
     }
  }

@@ -450,6 +450,16 @@ nav{
     box-shadow: 0 0 5px rgb(153, 153, 153);
     border-radius: 0.5rem;
   }
+  .notification-modal{
+    right: 50px;
+  }
+  .notification-modal .rqst{
+      border-radius: 0.5rem;
+      margin: 5px;
+      padding: 10px;
+      justify-content: center;
+  }
+
   .modal-content .avatar{
       width: 55px;
       padding: 0;
@@ -483,6 +493,10 @@ nav{
   }
   .modal-options h3{
     font-size: 16px;
+    margin: 10px 15px;
+  }
+  .modal-options .text h3{
+      margin: 0;
   }
   .modal-options h4{
     font-size: 15px;
@@ -491,6 +505,10 @@ nav{
     font-size: 14px;
     color: gray;
   }
+  .notification-modal p{
+    color: black;
+}
+
   #myBtn3{
       width: inherit;
       padding: 10px;
@@ -522,7 +540,7 @@ nav{
         padding: 15px;
         width: 90%;
       }
-      .modal-content {
+      .modal-content, .notification-modal { 
     top: 52px;
     left: 10px;
     width: 90%;

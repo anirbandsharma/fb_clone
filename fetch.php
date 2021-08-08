@@ -14,7 +14,7 @@ $id = $row1["id"];
 
 if (isset($_POST['msg_id'])) {
     $msg_id = $_POST['msg_id'];
-    $query = "SELECT * FROM posts INNER JOIN users ON posts.id = users.id where post_id < $msg_id order by posts.post_id DESC LIMIT 3";
+    $query = "SELECT * FROM ((posts INNER JOIN users ON posts.id = users.id) INNER JOIN friends ON users.id = friends.id) WHERE friends.id = posts.id AND friends.friend_id = $id AND post_id < $msg_id order by posts.post_id DESC LIMIT 3";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_array($result)) {
 

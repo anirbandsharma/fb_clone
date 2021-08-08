@@ -42,18 +42,18 @@
             <div class="line"></div>
             <form action="signup.php" method="POST">
                 <div class="row">
-                   <input type="text" name="f_name" placeholder="First name">
-                   <input type="text" name="l_name" placeholder="Surname">
+                   <input type="text" name="f_name" placeholder="First name" required>
+                   <input type="text" name="l_name" placeholder="Surname" required>
                 </div>
                 <div class="row">
-                    <input type="email" name="email" placeholder="Email address">
+                    <input type="email" name="email" placeholder="Email address" required>
                 </div>
                 <div class="row">
-                    <input type="password" name="password" placeholder="New password">
+                    <input type="password" name="password" placeholder="New password" required>
                 </div>
                 <label class="title" for="date">Date of birth</label>
                 <div class="row">
-                    <input type="date" name="dob" placeholder="dob">
+                    <input type="date" name="dob" placeholder="dob" required>
                 </div>
                 <label class="title" for="radio">Gender</label>
                 <div class="row">
