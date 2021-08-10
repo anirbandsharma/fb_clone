@@ -8,6 +8,7 @@ button{
     border:none;
     background-color: transparent;
     padding: 0;
+    width: 100%;
 }
 body{
     background-color: rgb(227, 233, 235);
@@ -15,6 +16,107 @@ body{
 .material-icons{
     color: rgb(48, 48, 48);
 }
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    z-index: 20; /* Sit on top */
+    position: absolute;
+    top: 52px;
+    right: 10px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 5px;
+    width: 25%;
+    box-shadow: 0 0 5px rgb(153, 153, 153);
+    border-radius: 0.5rem;
+  }
+  .notification-modal{
+    right: 50px;
+  }
+  .notification-modal .rqst{
+      border-radius: 0.5rem;
+      margin: 5px;
+      padding: 10px;
+      justify-content: center;
+  }
+
+  .modal-content .avatar{
+      width: 55px;
+      padding: 0;
+      margin: 0 15px 0 0;
+  }
+  .modal-options button{
+    display: flex;
+    align-items: center;
+    padding: 15px 5px;
+    text-align: start;
+}
+.modal-options .btn-content{
+    display: flex;
+    align-items: center;
+}
+.modal-options .arrow{
+    justify-content: space-between;
+}
+  .modal-options{
+    display: flex;
+    align-items: center;
+    animation: ex 0.2s ease-out;
+}
+  .modal-options button:hover:not(.active){
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 0.5rem;
+}
+  .modal-options button span{
+      font-size: 30px;
+      padding: 0 10px;
+  }
+  .modal-options h3{
+    font-size: 16px;
+    margin: 10px 15px;
+  }
+  .modal-options .text h3{
+      margin: 0;
+  }
+  .modal-options h4{
+    font-size: 15px;
+  }
+  .modal-options p{
+    font-size: 14px;
+    color: gray;
+  }
+  .notification-modal p{
+    color: black;
+}
+
+  #myBtn3{
+      width: inherit;
+      padding: 10px;
+  }
+  #myBtn3:hover{
+    background-color: rgba(221, 221, 221, 0.774);
+    border-radius: 50%;
+}
+@keyframes ex {
+    0% {transform: translateX(100%); opacity: 0;}
+    100% {transform: translateX(0); opacity: 1;}
+}
+
+
 nav{
     position: sticky;
     top: 0;
@@ -23,7 +125,7 @@ nav{
     box-shadow: 0 1px 5px rgb(209, 209, 209);
 }
 .nav{
-    width: 100%;
+    width: (100%-10px);
     height: 55px;
     display: flex;
     align-items: center;
@@ -97,85 +199,30 @@ nav{
     padding: 10px;
 }
 
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 20; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    position: absolute;
-    top: 52px;
-    right: 10px;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 5px;
-    width: 25%;
-    box-shadow: 0 0 5px rgb(153, 153, 153);
-    border-radius: 0.5rem;
-  }
-  .modal-content .avatar{
-      width: 55px;
-      padding: 0;
-      margin: 0 15px 0 0;
-  }
-  .modal-options{
-      display: flex;
-      align-items: center;
-      padding: 15px 5px;
-  }
-  .modal-options:hover{
-    background-color: rgba(221, 221, 221, 0.774);
-    border-radius: 0.5rem;
-}
-  .modal-options span{
-      font-size: 30px;
-      padding: 0 10px;
-  }
-  .modal-options h3{
-    font-size: 16px;
-  }
-  .modal-options h4{
-    font-size: 15px;
-  }
-  .modal-options p{
-    font-size: 14px;
-    color: gray;
-  }
-
   /* header */
   .header{
       display: flex;
       flex-direction: column;
       align-items: center;
       background: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255), rgb(90, 47, 47));
-      height: 55vh;
+      height: 25rem;
       text-align: center;
       position: relative;
   }
   .cover-photo{
       width: 65%;
-      height: 42vh;
+      height: 18rem;
   }
   .cover-photo img{
       width: 100%;
       height: inherit;
       border-radius:0 0 0.5rem 0.5rem;
   }
-  .profile{
+  .head-profile{
       position: absolute;
       bottom: 5px;
   }
-  .profile img{
+  .head-profile img{
     border: 5px solid white;
       width: 170px;
       border-radius: 50%;
@@ -187,6 +234,7 @@ nav{
       position: absolute;
       bottom: 0;
   }
+
 
   /* feed */
   .profile-nav{
@@ -209,6 +257,17 @@ nav{
   .profile-nav-container-right{
     display: flex;
   }
+  .profile-nav-container-right button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    margin: 0 5px;
+    background-color: lightgrey;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    width: fit-content;
+  }
   .profile-item{
       margin: 0 10px;
       width: 70px;
@@ -218,13 +277,242 @@ nav{
       justify-content: center;
       color: gray;
   }
-  .active{
+  .active1{
       color: rgb(0, 132, 255);
       box-shadow: 0 3px 0 rgb(0, 132, 255);
   }
 
   /* profile-body */
   .profile-body{
-      background-color: grey;
-      height: 1000px;
+      display: flex;
+      justify-content: center;
+      padding: 0 16%;
   }
+  .profile-left, .profile-right{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 5px ;
+  }
+  .profile-left{
+    flex: 1;
+  }
+  .profile-right{
+    flex: 1.5;
+  }
+
+   /* left-profile */
+   .left-card{
+       width: 100%;
+       height: fit-content;
+       border-radius: 0.5rem;
+       background-color: white;
+       padding: 15px;
+       margin: 10px 0;
+       display: flex;
+       flex-direction: column;
+   }
+   .left-card p{
+       padding: 5px;
+   }
+
+   .left-card-heading{
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+   }
+
+   .lib{
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr;
+   }
+   .lib-thumb{
+       width: 100px;
+       margin: 5px;
+   }
+   .lib-thumb img{
+       border-radius: 0.5rem;
+   }
+
+  /* post */
+
+.post{
+    width: 100%;
+    height: 130px;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.post-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+.post-top .avatar{
+    margin: 0;
+}
+.post-input{
+    width: 90%;
+    border: none;
+    background-color: rgb(227, 233, 235);
+    border-radius: 2rem;
+    height: 36px;
+    padding: 5px 15px;
+    color: grey;
+    cursor: pointer;
+}
+.line{
+    width: 90%;
+    height: 1px;
+    background-color: rgb(196, 196, 196);
+}
+.post-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+}
+.post-btn{
+    display: flex;
+    align-items: center;
+}
+
+/* post-modal */
+.modal-post {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 55px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(255, 255, 255, 0.74);
+  }
+  
+  /* Modal Content */
+  .modal-content-post {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    background-color: #fefefe;
+    margin: auto;
+    padding: 15px;
+    width: 35%;
+    height: fit-content;
+    box-shadow: 0 0 5px rgb(153, 153, 153);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .modal-content-post .profile{
+      display: flex;
+      align-items: center;
+      margin: 0 0 5px 0;
+  }
+  .modal-content-post .post-submit{
+     width: 100%;
+     height: 40px;
+     border-radius: 0.5rem;
+     border:none;
+     color: white;
+     background-color: rgb(32, 115, 184);
+     font-weight: 900;
+  }
+  .modal-content-post textarea{
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(77, 77, 77, 0.363)
+  }
+  .modal-content-post .line{
+      width: 100%;
+      margin: 10px 0;
+  } 
+
+
+/* feed */
+.feed-comtainer{
+    display: flex;
+    flex-direction: column;
+}
+.feed-card{
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin: 10px 0;
+}
+.feed-card-title{
+    display: flex;
+    align-items: center;
+}
+.feed-card-title h4{
+    font-size: 14px;
+}
+.feed-card-title p{
+    font-size: 12px;
+    color: gray;
+}
+.feed-post{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.counters{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.actions{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+.like{
+    display: flex;
+    align-items: center;
+    font-size: small;
+    justify-content: center;
+    color: rgb(128, 128, 128);
+}
+.like span{
+    margin: 5px;
+    color: gray;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.comment .post-input{
+    margin: 5px 0;
+}
+.comment form input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+}
+.comment .line{
+    margin: 5px 0;
+}
+.comment-read{
+    display: flex;
+    align-items:center;
+    margin: 5px 5px;
+}
+.comment-detail{
+    background-color: rgb(227, 233, 235);
+    padding: 10px;
+    border-radius: 0.5rem;
+}

@@ -20,18 +20,16 @@ $lname = $row["l_name"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fb-clone</title>
-    <link rel="stylesheet" href="./css/fb-clone.css">
+    <title>fb-myprofile</title>
+    <link rel="stylesheet" href="./css/fb-profile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav">
             <div class="left-nav">
                 <span class="material-icons" style="font-size: 48px; color: rgb(24, 128, 226);">facebook</span>
@@ -43,7 +41,7 @@ $lname = $row["l_name"];
                 </div>
             </div>
             <div class="feed-nav">
-                <div class="icon active">
+                <div class="icon" onclick="location.href='fb-clone.php';">
                     <span class="material-icons">home</span>
                 </div>
                 <div class="icon">
@@ -189,118 +187,132 @@ $lname = $row["l_name"];
         </div>
     </nav>
 
-    <div class="main-content">
+    <div class="header">
+        <div class="cover-photo">
+            <img src="images/android-post.jpeg" alt="">
+        </div>
+        <div class="head-profile">
+            <img src="images/avatar.jpg" alt="">
+        <div class="name">
+            <h1><?php echo $fname.' '.$lname ; ?></h1>
+            <p style="color: rgb(16, 86, 190);">Add bio</p>
+        </div>
+    </div>
+    <div class="header-line"></div>
+    </div>
 
-        <!-- left-sidebar -->
-        <div class="left-sidebar">
-            <div class="left-content" onclick="location.href='fb-myprofile.php';">
-                <img src="images/avatar.jpg" class="avatar">
-                <h4><?php echo $fname . " " . $lname; ?></h4>
+    <div class="profile-nav">
+        <div class="profile-nav-container">
+            <div class="profile-nav-container-left">
+                <div class="profile-item active1"><h4>Posts</h4></div>
+                <div class="profile-item"><h4>About</h4></div>
+                <div class="profile-item"><h4>Friends</h4></div>
+                <div class="profile-item"><h4>Photos</h4></div>
+                <div class="profile-item"><h4>More</h4></div>
             </div>
-            <div class="left-content" onclick="location.href='https://www.mygov.in/covid-19';">
-                <span class="material-icons">
-                    masks
-                </span>
-                <h4>Covid-19 Information</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    people
-                </span>
-                <h4>Friends</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    groups
-                </span>
-                <h4>Groups</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    storefront
-                </span>
-                <h4>Marketplace</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    sports_esports
-                </span>
-                <h4>Watch</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    event
-                </span>
-                <h4>Events</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    watch_later
-                </span>
-                <h4>Memories</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    bookmark_added
-                </span>
-                <h4>Saved</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    flag
-                </span>
-                <h4>Pages</h4>
-            </div>
-            <div class="left-content">
-                <span class="material-icons">
-                    arrow_drop_down_circle
-                </span>
-                <h4>See More</h4>
+            <div class="profile-nav-container-right">
+                <button style="background-color: rgb(0, 132, 255); color: white;">Add to story</button>
+                <button>Edit profile</button>
+                <button>...</button>
             </div>
         </div>
+    </div>
+    
+    <div class="profile-body">
+        <div class="profile-left">
+            <div class="left-card">
+                <h3>Intro</h3>
+                <p>From <b>location_variable</b></p>
+                <p>Work: <b>job_variable</b></p>
+                <p>Relationship: <b>relationship_variable</b></p>
+                <p>Contact <b>Contact_variable</b></p>
+            </div>
 
-        <!-- feed -->
-        <div class="feed">
-
-            <div class="status">
-                <div class="status-card">
-                    <img src="images/avatar.jpg" alt="">
+            <div class="left-card">
+                <div class="left-card-heading">
+                    <h3>Photos</h3>
+                    <a href="#">See all photos</a>
                 </div>
-                <div class="status-card">
-                    <img src="images/android-post.jpeg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/assassins.png" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/android.jpeg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/controller.png" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/android.jpeg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/avatar.jpg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/android-post.jpeg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/assassins.png" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/android.jpeg" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/controller.png" alt="">
-                </div>
-                <div class="status-card">
-                    <img src="images/android.jpeg" alt="">
+                <div class="lib">
+                <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                    </div>
                 </div>
             </div>
 
+            <div class="left-card">
+                <div class="left-card-heading">
+                    <h3>Friends</h3>
+                    <a href="#">See all friends</a>
+                </div>
+                <div class="lib">
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                    <div class="lib-thumb">
+                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <p>Some Name</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile-right">
+            
             <!-- post -->
             <div class="post">
                 <div class="post-top">
@@ -332,8 +344,8 @@ $lname = $row["l_name"];
                 </div>
             </div>
 
-            <!-- post-modal -->
-            <div id="myModal-post" class="modal-post">
+              <!-- post-modal -->
+              <div id="myModal-post" class="modal-post">
                 <div class="modal-content-post">
                     <div class="post-heading">
                         <center>
@@ -354,10 +366,11 @@ $lname = $row["l_name"];
             </div>
 
 
+            <!-- feed -->
             <div class="feed-container">
 
                 <?php
-                $query = "SELECT * FROM ((posts INNER JOIN users ON posts.id = users.id) INNER JOIN friends ON users.id = friends.id) WHERE friends.id = posts.id AND friends.friend_id = $id order by posts.post_id DESC LIMIT 5";
+                $query = "SELECT * FROM (posts INNER JOIN users ON posts.id = users.id) WHERE posts.id = $id order by posts.post_id DESC";
                 $result = mysqli_query($con, $query);
 
 
@@ -486,171 +499,18 @@ $lname = $row["l_name"];
                 <?php
                 }
                 ?>
-
-                <center>
-                    <div id="msg_loader" onclick="getthedata()">load more...
-                        <!--img src=""-->
-                    </div>
-                </center>
-                <!-- <div class="feed-card">
-                    <div class="feed-card-title">
-                        <img src="images/android.jpeg" alt="" class="avatar">
-                        <div class="name">
-                            <h4>Android Authority</h4>
-                            <p>26 July at 11:47</p>
-                        </div>
-                    </div>
-                    <p>Oppo Watch 2 leaks ahead of July 27 launch, but will it get the new Wear OS 3?</p>
-                     <img src="images/android-post.jpeg" alt="" class="feed-post"> 
-                    <div class="counters">
-                        <div class="like">
-                            <span class="material-icons" style="color: rgb(62, 165, 233); font-size: 17px;">
-                                thumb_up
-                            </span>
-                            <p>503</p>
-                        </div>
-                        <div class="like">
-                            <p>103 comments 26 shares</p>
-                        </div>
-                    </div>
-                    <center>
-                        <div class="line"></div>
-                    </center>
-                    <div class="actions">
-                        <div class="like">
-                            <span class="material-icons">
-                                thumb_up
-                            </span>
-                            <p>Like</p>
-                        </div>
-                        <div class="like">
-                            <span class="material-icons">
-                                chat_bubble
-                            </span>
-                            <p>Comment</p>
-                        </div>
-                        <div class="like">
-                            <span class="material-icons">
-                                share
-                            </span>
-                            <p>Share</p>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <center>
-                            <div class="line"></div>
-                        </center>
-                        <div class="post-top">
-                            <img src="images/avatar.jpg" class="avatar">
-                            <div class="post-input">
-                                <form action="#" method="POST">
-                                    <input type="text" name="comment">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="comment-read">
-                            <img src="images/avatar.jpg" class="avatar">
-                            <div class="comment-detail">
-                                <p>this is a comment.</p>
-                            </div>
-                        </div>
-                        <div class="comment-read">
-                            <img src="images/android.jpeg" class="avatar">
-                            <div class="comment-detail">
-                                <p>this is a comment returns.</p>
-                            </div>
-                        </div>
-                        <div class="comment-read">
-                            <img src="images/assassins.png" class="avatar">
-                            <div class="comment-detail">
-                                <p>this is also a comment.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-
+                
             </div>
 
         </div>
 
-        <!-- right-sidebar -->
-        <div class="right-sidebar">
-
-            <div class="birthday">
-                <div class="birthday-head">
-                    <div class="birthday-title">
-                        <span class="material-icons" style="color: tomato;">
-                            redeem
-                        </span>
-                        <h4>Birthdays</h4>
-                    </div>
-                    <h4>X</h4>
-                </div>
-                <p><b>Mr. Rajkumar</b> and <b>2 others</b> have their birthdays today.</p>
-            </div>
-
-            <center>
-                <div class="line"></div>
-            </center>
-
-            <div class="contacts">
-                <div class="contacts-head">
-                    <div class="contacts-head-title">
-                        <h4>People</h4>
-                    </div>
-                    <div class="contact-head-btn">
-                        <span class="material-icons con">
-                            video_call
-                        </span>
-                        <span class="material-icons con">
-                            search
-                        </span>
-                        <span class="material-icons con">
-                            more_horiz
-                        </span>
-                    </div>
-                </div>
-
-                <?php
-                $queryfriend = "SELECT * FROM users WHERE NOT ( id = $id )";
-                $resultfriend = mysqli_query($con, $queryfriend);
-
-                while ($rowfriend = mysqli_fetch_array($resultfriend)) {
-                    $uid = $rowfriend["id"];
-                    $uname = $rowfriend["f_name"] . " " . $rowfriend["l_name"];
-                ?>
-
-                    <div class="person">
-                        <img src="images/avatar.jpg" class="avatar">
-                        <h4><?php echo $uname; ?></h4>
-                        <button onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';">ADD</button>
-                    </div>
-                <?php } ?>
-
-            </div>
-
-        </div>
     </div>
 
+
     <!-- moadl js -->
-    <script src="./js/modal.js"></script>
-    <!-- dark-mode -->
-    <script src="./js/fb-clone-dark.js"></script>
-    <!-- status carousel -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+   <script src="./js/modal.js"></script>
 
-    <script>
-        var flkty = new Flickity('.status', {
-            // options
-            cellAlign: 'left',
-            groupCells: 5,
-            freeScroll: true,
-            pageDots: false
-        });
-    </script>
-
-    <script>
+   <script>
         function fileupload() {
             document.getElementById('file').click();
             document.getElementById('myModal-post').style.display = "block";
@@ -658,10 +518,9 @@ $lname = $row["l_name"];
         }
     </script>
 
-    <!-- loading -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/loading.js"></script>
+   <!-- dark-mode -->
+    <script src="./js/fb-clone-dark.js"></script>
+
 </body>
 
 </html>

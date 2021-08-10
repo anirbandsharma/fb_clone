@@ -28,39 +28,43 @@ $lname = $row["l_name"];
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-<style>
-    .main{
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    .list{
-        width: 100%;
-        height: fit-content;
-        background-color: white;
-        border-radius: 0.5rem;
-        padding: 10px;
-    }
-    .people{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-.people h4{
-    width: 100%;
-}
-.people button{
-    background-color: green;
-    color: white;
-    padding: 10px 30px;
-    font-weight: 700;
-    width: fit-content;
-    border-radius: 0.5rem;
-}
-</style>    
+    <style>
+        .main {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .list {
+            width: 100%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 10px;
+        }
+
+        .people {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .people h4 {
+            width: 100%;
+        }
+
+        .people button {
+            background-color: green;
+            color: white;
+            padding: 10px 30px;
+            font-weight: 700;
+            width: fit-content;
+            border-radius: 0.5rem;
+        }
+    </style>
 
 </head>
 
@@ -225,46 +229,64 @@ $lname = $row["l_name"];
 
     <div class="main">
 
-    <h2>Everyone on fakebook..</h2>
+        <h2>Everyone on fakebook..</h2>
 
-    <div class="list">
+        <div class="list">
 
-    <?php
-                $queryfriend = "SELECT * FROM users WHERE NOT ( id = $id )";
-                $resultfriend = mysqli_query($con, $queryfriend);
+            <?php
+            $queryfriend = "SELECT * FROM users WHERE NOT ( id = $id )";
+            $resultfriend = mysqli_query($con, $queryfriend);
 
-                while ($rowfriend = mysqli_fetch_array($resultfriend)) {
-                    $uid = $rowfriend["id"];
-                    $uname = $rowfriend["f_name"] . " " . $rowfriend["l_name"];
+            while ($rowfriend = mysqli_fetch_array($resultfriend)) {
+                $uid = $rowfriend["id"];
+                $uname = $rowfriend["f_name"] . " " . $rowfriend["l_name"];
 
 
-                    $sqlpeople = "SELECT * FROM users INNER JOIN friends ON users.id = friends.id WHERE friends.friend_id = $id AND friends.id = $uid";
-                    $resultpeople = mysqli_query($con, $sqlpeople);
-                    $rowpeople = mysqli_fetch_array($resultpeople);
-                    $pname = $rowpeople["f_name"] . " " . $rowpeople["l_name"];
+                $sqlpeople = "SELECT * FROM users INNER JOIN friends ON users.id = friends.id WHERE friends.friend_id = $id AND friends.id = $uid";
+                $resultpeople = mysqli_query($con, $sqlpeople);
+                $rowpeople = mysqli_fetch_array($resultpeople);
+                $pname = $rowpeople["f_name"] . " " . $rowpeople["l_name"];
 
-                    if($pname != $uname) {
-                ?>
-                
-                <div class="people">
-                <img src="images/avatar.jpg" class="avatar">
-                        <h4><?php echo $uname; ?></h4>
-                        <button onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';">ADD</button>
-                </div>
-                <center>
-                    <div class="line"></div>
-                </center>
-                    <?php } else{ ?>
-                        <div class="people">
+                $sqlrqst = "SELECT COUNT(*) FROM friend_rqst WHERE id=$uid AND friend_id=$id";
+                $resultrqst = mysqli_query($con, $sqlrqst);
+                $rowrqst = mysqli_fetch_array($resultrqst);
+
+                if ($pname == $uname) {
+            ?>
+
+                    <div class="people">
                         <img src="images/avatar.jpg" class="avatar">
-                                <h4><?php echo $uname; ?></h4>
-                                <button disabled onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';" style="background-color: darkblue;">Friend</button>
+                        <h4><?php echo $uname; ?></h4>
+                        <button disabled onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';" style="background-color: darkblue;">Friend</button>
+                    </div>
+                    <center>
+                        <div class="line"></div>
+                    </center>
+
+                <?php } else { 
+
+                    if ($rowrqst[0] == 1) { ?>
+                        <div class="people">
+                            <img src="images/avatar.jpg" class="avatar">
+                            <h4><?php echo $uname; ?></h4>
+                            <button disabled onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';" style="background-color: red;">Sent</button>
                         </div>
                         <center>
                             <div class="line"></div>
                         </center>
-                   <?php } ?>
-                <?php } ?>
+                    <?php } else {?>    
+                    <div class="people">
+                        <img src="images/avatar.jpg" class="avatar">
+                        <h4><?php echo $uname; ?></h4>
+                        <button onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';">ADD</button>
+                    </div>
+                    <center>
+                        <div class="line"></div>
+                    </center>
+
+                <?php }
+             }
+            }  ?>
 
         </div>
     </div>
@@ -273,9 +295,9 @@ $lname = $row["l_name"];
     <script src="./js/modal-noti.js"></script>
     <!-- dark-mode -->
     <script src="./js/fb-clone-dark.js"></script>
-   
 
-   
+
+
 </body>
 
 </html>
