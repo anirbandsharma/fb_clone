@@ -332,6 +332,7 @@ nav{
    }
    .lib-thumb img{
        border-radius: 0.5rem;
+       aspect-ratio: 1 / 1;
    }
 
   /* post */
