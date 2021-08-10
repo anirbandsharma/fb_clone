@@ -11,6 +11,7 @@ $row = mysqli_fetch_array($sql);
 $id = $row["id"];
 $fname = $row["f_name"];
 $lname = $row["l_name"];
+$pro_photo = $row["profile_photo"];
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,8 @@ $lname = $row["l_name"];
                 </div>
             </div>
             <div class="right-nav">
-                <div class="pro" onclick="location.href='fb-myprofile.php';"><img src="images/avatar.jpg" class="avatar">
+                <div class="pro" onclick="location.href='fb-myprofile.php';">
+                <img src="<?php echo $pro_photo; ?>" class="avatar">
                     <p><?php echo $fname; ?></p>
                 </div>
                 <button>
@@ -86,7 +88,7 @@ $lname = $row["l_name"];
 
                     <div class="modal-options">
                         <button onclick="location.href='fb-myprofile.php';">
-                            <img src="images/avatar.jpg" alt="" class="avatar">
+                            <img src="<?php echo $pro_photo; ?>" alt="" class="avatar">
                             <div class="text">
                                 <h3><b><?php echo $fname . " " . $lname; ?></b></h3>
                                 <p>See your profile.</p>
@@ -194,7 +196,7 @@ $lname = $row["l_name"];
         <!-- left-sidebar -->
         <div class="left-sidebar">
             <div class="left-content" onclick="location.href='fb-myprofile.php';">
-                <img src="images/avatar.jpg" class="avatar">
+                <img src="<?php echo $pro_photo; ?>" class="avatar">
                 <h4><?php echo $fname . " " . $lname; ?></h4>
             </div>
             <div class="left-content" onclick="location.href='https://www.mygov.in/covid-19';">
@@ -304,7 +306,7 @@ $lname = $row["l_name"];
             <!-- post -->
             <div class="post">
                 <div class="post-top">
-                    <img src="images/avatar.jpg" class="avatar">
+                    <img src="<?php echo $pro_photo; ?>" class="avatar">
                     <div class="post-input" id="myBtn-post">What's on your mind, <?php echo $fname; ?>?</div>
                 </div>
                 <center>
@@ -342,7 +344,7 @@ $lname = $row["l_name"];
                     </div>
                     <div class="line"></div>
                     <div class="profile">
-                        <img src="./images/avatar.jpg" class="avatar" alt="">
+                        <img src="<?php echo $pro_photo; ?>" class="avatar" alt="">
                         <h5><?php echo $fname . " " . $lname; ?></h5>
                     </div>
                     <form method="POST" enctype="multipart/form-data" action="post.php?id=<?php echo $id; ?>">
@@ -362,6 +364,7 @@ $lname = $row["l_name"];
 
 
                 while ($row = mysqli_fetch_array($result)) {
+                    $userid = $row["id"];
                     $post_id = $row["post_id"];
                     $name = $row["f_name"] . " " . $row["l_name"];
                     $post_detail = $row["post_detail"];
@@ -382,7 +385,7 @@ $lname = $row["l_name"];
                 ?>
 
                     <div class="feed-card" data-id="<?php echo $msgID; ?>">
-                        <div class="feed-card-title">
+                        <div class="feed-card-title" onclick="location.href='fb-profile.php?uid=<?php echo $userid; ?>';">
                             <img src="images/android.jpeg" alt="" class="avatar">
                             <div class="name">
                                 <h4><?php echo $name; ?> </h4>
@@ -456,7 +459,7 @@ $lname = $row["l_name"];
                                 <div class="line"></div>
                             </center>
                             <div class="post-top">
-                                <img src="images/avatar.jpg" class="avatar">
+                                <img src="<?php echo $pro_photo; ?>" class="avatar">
                                 <div class="post-input">
                                     <form action="comment.php?post_id=<?php echo $post_id; ?>&id=<?php echo $id; ?>" method="POST">
                                         <input type="text" name="comment" placeholder="Write a comment..." autocomplete="off">

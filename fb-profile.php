@@ -6,12 +6,20 @@ if (!$_SESSION['email']) {
 $email = $_SESSION['email'];
 
 include './connect.php';
+
 $sql = mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
 $row = mysqli_fetch_array($sql);
 $id = $row["id"];
 $fname = $row["f_name"];
 $lname = $row["l_name"];
-$pro_photo = $row["profile_photo"];
+
+// get profile user
+$uid = $_GET["uid"];
+$sqluser = mysqli_query($con, "SELECT * FROM users WHERE id='$uid'");
+$rowuser = mysqli_fetch_array($sqluser);
+$userfname = $rowuser["f_name"];
+$userlname = $rowuser["l_name"];
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +29,7 @@ $pro_photo = $row["profile_photo"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $fname.' '.$lname ; ?></title>
+    <title><?php echo $userfname.' '.$userlname ; ?></title>
     <link rel="stylesheet" href="./css/fb-profile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,8 +67,7 @@ $pro_photo = $row["profile_photo"];
                 </div>
             </div>
             <div class="right-nav">
-                <div class="pro" onclick="location.href='fb-myprofile.php';">
-                <img src="<?php echo $pro_photo; ?>" class="avatar">
+                <div class="pro" onclick="location.href='fb-myprofile.php';"><img src="images/avatar.jpg" class="avatar">
                     <p><?php echo $fname; ?></p>
                 </div>
                 <button>
@@ -86,7 +93,7 @@ $pro_photo = $row["profile_photo"];
 
                     <div class="modal-options">
                         <button onclick="location.href='fb-myprofile.php';">
-                            <img src="<?php echo $pro_photo; ?>" alt="" class="avatar">
+                            <img src="images/avatar.jpg" alt="" class="avatar">
                             <div class="text">
                                 <h3><b><?php echo $fname . " " . $lname; ?></b></h3>
                                 <p>See your profile.</p>
@@ -194,10 +201,10 @@ $pro_photo = $row["profile_photo"];
             <img src="images/android-post.jpeg" alt="">
         </div>
         <div class="head-profile">
-            <img src="<?php echo $pro_photo; ?>" alt="">
+            <img src="images/avatar.jpg" alt="">
         <div class="name">
-            <h1><?php echo $fname.' '.$lname ; ?></h1>
-            <p style="color: rgb(16, 86, 190);">Add bio</p>
+            <h1><?php echo $userfname.' '.$userlname ; ?></h1>
+            <p>user_bio_variable</p>
         </div>
     </div>
     <div class="header-line"></div>
@@ -213,8 +220,8 @@ $pro_photo = $row["profile_photo"];
                 <div class="profile-item"><h4>More</h4></div>
             </div>
             <div class="profile-nav-container-right">
-                <button style="background-color: rgb(0, 132, 255); color: white;">Add to story</button>
-                <button>Edit profile</button>
+                <button>Friends(if)</button>
+                <button style="background-color: rgb(0, 132, 255); color: white;">Message</button>
                 <button>...</button>
             </div>
         </div>
@@ -318,7 +325,7 @@ $pro_photo = $row["profile_photo"];
             <!-- post -->
             <div class="post">
                 <div class="post-top">
-                    <img src="<?php echo $pro_photo; ?>" class="avatar">
+                    <img src="images/avatar.jpg" class="avatar">
                     <div class="post-input" id="myBtn-post">What's on your mind, <?php echo $fname; ?>?</div>
                 </div>
                 <center>
@@ -356,7 +363,7 @@ $pro_photo = $row["profile_photo"];
                     </div>
                     <div class="line"></div>
                     <div class="profile">
-                        <img src="<?php echo $pro_photo; ?>" class="avatar" alt="">
+                        <img src="./images/avatar.jpg" class="avatar" alt="">
                         <h5><?php echo $fname . " " . $lname; ?></h5>
                     </div>
                     <form method="POST" enctype="multipart/form-data" action="post.php?id=<?php echo $id; ?>">
@@ -372,7 +379,7 @@ $pro_photo = $row["profile_photo"];
             <div class="feed-container">
 
                 <?php
-                $query = "SELECT * FROM (posts INNER JOIN users ON posts.id = users.id) WHERE posts.id = $id order by posts.post_id DESC";
+                $query = "SELECT * FROM (posts INNER JOIN users ON posts.id = users.id) WHERE posts.id = $uid order by posts.post_id DESC";
                 $result = mysqli_query($con, $query);
 
 
@@ -471,7 +478,7 @@ $pro_photo = $row["profile_photo"];
                                 <div class="line"></div>
                             </center>
                             <div class="post-top">
-                                <img src="<?php echo $pro_photo; ?>" class="avatar">
+                                <img src="images/avatar.jpg" class="avatar">
                                 <div class="post-input">
                                     <form action="comment.php?post_id=<?php echo $post_id; ?>&id=<?php echo $id; ?>" method="POST">
                                         <input type="text" name="comment" placeholder="Write a comment..." autocomplete="off">
@@ -507,8 +514,7 @@ $pro_photo = $row["profile_photo"];
         </div>
 
     </div>
-    
-    <?php include('edit-profile.php'); ?>
+
 
     <!-- moadl js -->
    <script src="./js/modal.js"></script>
