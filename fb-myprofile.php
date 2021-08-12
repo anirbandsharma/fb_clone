@@ -214,7 +214,7 @@ $pro_photo = $row["profile_photo"];
             </div>
             <div class="profile-nav-container-right">
                 <button style="background-color: rgb(0, 132, 255); color: white;">Add to story</button>
-                <button>Edit profile</button>
+                <button id="edit-profile-btn">Edit profile</button>
                 <button>...</button>
             </div>
         </div>
@@ -236,33 +236,26 @@ $pro_photo = $row["profile_photo"];
                     <a href="#">See all photos</a>
                 </div>
                 <div class="lib">
-                <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
+
+                <?php
+                $query_lib = "SELECT * FROM posts WHERE posts.id = $id order by post_id DESC";
+                $result_lib = mysqli_query($con, $query_lib);
+
+
+                while ($rowlib = mysqli_fetch_array($result_lib)) {
+                    $photolib = $rowlib["photo"];
+                    $piecelib = explode(".", $photolib);
+                    $extlib = end($piecelib);
+                    $allowedlib = array('jpg', 'jpeg', 'png');
+                    
+                    if (in_array($extlib, $allowedlib)) { ?>
+
                     <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
+                        <img src="<?php echo $photolib; ?>" class="lib-thumb">
                     </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
-                    <div class="lib-thumb">
-                        <img src="images/avatar.jpg" class="lib-thumb">
-                    </div>
+
+                   <?php } } ?> 
+
                 </div>
             </div>
 

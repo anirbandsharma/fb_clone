@@ -6,6 +6,8 @@
 
  var modalPost = document.getElementById("myModal-post");
 
+ var modalEdit = document.getElementById("myModal-editprofile");
+
 
  // Get the button that opens the modal
  var btn = document.getElementById("myBtn");
@@ -16,6 +18,8 @@
  
  var btnPost = document.getElementById("myBtn-post");
 
+ var editBtn = document.getElementById("edit-profile-btn");
+ var close_editBtn = document.getElementById("close-edit");
 
  // When the user clicks the button, open the modal 
  btn.onclick = function () {
@@ -37,6 +41,16 @@ btn_notification.onclick = function () {
  btnPost.onclick = function () {
     modalPost.style.display = "block";
     document.body.style.overflow = "hidden";
+}
+
+editBtn.onclick = function () {
+    modalEdit.style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+close_editBtn.onclick = function () {
+    modalEdit.style.display = "none";
+    document.body.style.overflow = "auto";
 }
 
  // When the user clicks anywhere outside of the modal, close it

@@ -600,7 +600,7 @@ $pro_photo = $row["profile_photo"];
             <div class="contacts">
                 <div class="contacts-head">
                     <div class="contacts-head-title">
-                        <h4>People</h4>
+                        <h4>Contacts</h4>
                     </div>
                     <div class="contact-head-btn">
                         <span class="material-icons con">
@@ -618,18 +618,29 @@ $pro_photo = $row["profile_photo"];
                 <?php
                 $queryfriend = "SELECT * FROM users WHERE NOT ( id = $id )";
                 $resultfriend = mysqli_query($con, $queryfriend);
-
+    
                 while ($rowfriend = mysqli_fetch_array($resultfriend)) {
                     $uid = $rowfriend["id"];
                     $uname = $rowfriend["f_name"] . " " . $rowfriend["l_name"];
+    
+    
+                    $sqlpeople = "SELECT * FROM users INNER JOIN friends ON users.id = friends.id WHERE friends.friend_id = $id AND friends.id = $uid";
+                    $resultpeople = mysqli_query($con, $sqlpeople);
+                    $rowpeople = mysqli_fetch_array($resultpeople);
+                    $pname = $rowpeople["f_name"] . " " . $rowpeople["l_name"];
+    
+                    $sqlrqst = "SELECT COUNT(*) FROM friend_rqst WHERE id=$uid AND friend_id=$id";
+                    $resultrqst = mysqli_query($con, $sqlrqst);
+                    $rowrqst = mysqli_fetch_array($resultrqst);
+    
+                    if ($pname == $uname) {
                 ?>
 
                     <div class="person">
                         <img src="images/avatar.jpg" class="avatar">
                         <h4><?php echo $uname; ?></h4>
-                        <button onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';">ADD</button>
                     </div>
-                <?php } ?>
+                <?php } } ?>
 
             </div>
 
