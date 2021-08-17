@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 10, 2021 at 07:56 PM
+-- Generation Time: Aug 17, 2021 at 09:53 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -79,6 +79,13 @@ CREATE TABLE `friend_rqst` (
   `friend_id` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `friend_rqst`
+--
+
+INSERT INTO `friend_rqst` (`friend_rqst_id`, `id`, `friend_id`) VALUES
+(18, 17, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +130,11 @@ INSERT INTO `posts` (`post_id`, `id`, `post_detail`, `upload_time`, `photo`) VAL
 (38, 1, 'testing 1 2 3', '2021-08-09 19:39:32', 'uploads/'),
 (39, 1, '', '2021-08-10 12:51:16', 'uploads/5ihh0t.jpg'),
 (40, 1, 'aaaa', '2021-08-10 12:51:52', 'uploads/'),
-(41, 1, 'aaaa', '2021-08-10 12:52:09', 'uploads/5ihh0t.jpg');
+(41, 1, 'aaaa', '2021-08-10 12:52:09', 'uploads/5ihh0t.jpg'),
+(42, 16, '', '2021-08-13 01:16:58', 'uploads/Screenshot from 2021-08-10 21-40-41.png'),
+(43, 16, '', '2021-08-13 01:17:44', 'uploads/5ihh0t.jpg'),
+(44, 16, 'test', '2021-08-13 01:17:54', 'uploads/'),
+(45, 17, 'hello\r\n', '2021-08-14 01:19:24', 'uploads/');
 
 -- --------------------------------------------------------
 
@@ -139,18 +150,23 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `gender` varchar(30) NOT NULL,
-  `profile_photo` varchar(255) NOT NULL DEFAULT 'images/avatar.jpg'
+  `profile_photo` varchar(255) NOT NULL DEFAULT 'images/avatar.jpg',
+  `cover_photo` varchar(255) NOT NULL DEFAULT 'images/cover.jpeg',
+  `bio` varchar(255) NOT NULL DEFAULT '(Not available)',
+  `work` varchar(255) NOT NULL DEFAULT '(Not available)',
+  `relationship` enum('None','Single','In a relationship','In an open relationship','It''s complicated','Engaged','Married','Separated','Divorced','Widowed') NOT NULL DEFAULT 'None',
+  `contact` varchar(255) NOT NULL DEFAULT 'Not available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `dob`, `gender`, `profile_photo`) VALUES
-(1, 'Anirban', 'Sharma', 'anirban@gmail.com', 'aa', '2021-08-01', 'Male', 'images/assassins.png'),
-(16, 'test', 'use', 'test@a.a', 'aa', '2021-05-07', 'Male', 'images/avatar.jpg'),
-(17, 'Another', 'User', 'a@a.a', 'aa', '2021-03-18', 'Male', 'images/avatar.jpg'),
-(18, 'raju', 'kumar', 'r@a.a', 'aa', '2021-05-07', 'Male', 'images/avatar.jpg');
+INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `dob`, `gender`, `profile_photo`, `cover_photo`, `bio`, `work`, `relationship`, `contact`) VALUES
+(1, 'Anirban', 'Sharma', 'anirban@gmail.com', 'aa', '2021-08-01', 'Male', 'uploads/spiderman.png', 'uploads/earth-1149733.jpg', 'I am the first account.', 'I made fakebook', 'Single', 'a@a.a'),
+(16, 'test', 'use', 'test@a.a', 'aa', '2021-05-07', 'Male', 'uploads/7396db0eaa291d47efaa4fca60c59a33.jpg', 'uploads/j.jpeg', '(Not available)', '(Not available)', 'None', 'Not available'),
+(17, 'Another', 'User', 'a@a.a', 'aa', '2021-03-18', 'Male', 'uploads/TMKOC-Jethalal-Dancing-768x564.jpg', 'uploads/65364106.jpg', 'this is the bio', 'student', 'Divorced', 'a@a.a'),
+(18, 'raju', 'kumar', 'r@a.a', 'aa', '2021-05-07', 'Male', 'images/avatar.jpg', 'images/cover.jpeg', '(Not available)', '(Not available)', 'None', 'Not available');
 
 --
 -- Indexes for dumped tables
@@ -215,13 +231,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `friends_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `friends_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `friend_rqst`
 --
 ALTER TABLE `friend_rqst`
-  MODIFY `friend_rqst_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `friend_rqst_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -233,13 +249,13 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
