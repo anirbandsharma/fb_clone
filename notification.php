@@ -24,12 +24,13 @@
 
                 while ($rowrqst = mysqli_fetch_array($resultrqst)) {
                     $rid = $rowrqst["id"];
+                    $rphoto = $rowrqst["profile_photo"];
                     $rname = $rowrqst["f_name"] . " " . $rowrqst["l_name"];
                 ?>
 
         <div class="modal-options">
-            <button onclick="location.href='fb-profile.html';">
-                <img src="images/avatar.jpg" alt="" class="avatar">
+            <button onclick="location.href='fb-profile.php?uid=<?php echo $rid; ?>';">
+                <img src="<?php echo $rphoto; ?>" alt="" class="avatar">
                 <div class="text">
                     <p><b><?php echo $rname; ?></b> sent you a friend request.</p>
                     <!-- <p>See the profile.</p> -->

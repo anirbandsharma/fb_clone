@@ -12,6 +12,11 @@ $id = $row["id"];
 $fname = $row["f_name"];
 $lname = $row["l_name"];
 $pro_photo = $row["profile_photo"];
+$cover_photo = $row["cover_photo"];
+$bio = $row["bio"];
+$work = $row["work"];
+$relationship = $row["relationship"];
+$contact = $row["contact"];
 ?>
 
 <!DOCTYPE html>
@@ -191,13 +196,13 @@ $pro_photo = $row["profile_photo"];
 
     <div class="header">
         <div class="cover-photo">
-            <img src="images/android-post.jpeg" alt="">
+            <img src="<?php echo $cover_photo; ?>" alt="">
         </div>
         <div class="head-profile">
             <img src="<?php echo $pro_photo; ?>" alt="">
         <div class="name">
             <h1><?php echo $fname.' '.$lname ; ?></h1>
-            <p style="color: rgb(16, 86, 190);">Add bio</p>
+            <p style="color: rgb(16, 86, 190);"><?php echo $bio; ?></p>
         </div>
     </div>
     <div class="header-line"></div>
@@ -225,9 +230,9 @@ $pro_photo = $row["profile_photo"];
             <div class="left-card">
                 <h3>Intro</h3>
                 <p>From <b>location_variable</b></p>
-                <p>Work: <b>job_variable</b></p>
-                <p>Relationship: <b>relationship_variable</b></p>
-                <p>Contact <b>Contact_variable</b></p>
+                <p>Work: <b><?php echo $work; ?></b></p>
+                <p>Relationship: <b><?php echo $relationship; ?></b></p>
+                <p>Contact <b><?php echo $contact; ?></b></p>
             </div>
 
             <div class="left-card">
@@ -504,7 +509,7 @@ $pro_photo = $row["profile_photo"];
     <?php include('edit-profile.php'); ?>
 
     <!-- moadl js -->
-   <script src="./js/modal.js"></script>
+   <script src="./js/modal-profile.js"></script>
 
    <script>
         function fileupload() {

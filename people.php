@@ -11,6 +11,7 @@ $row = mysqli_fetch_array($sql);
 $id = $row["id"];
 $fname = $row["f_name"];
 $lname = $row["l_name"];
+$pro_photo = $row["profile_photo"];
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +99,7 @@ $lname = $row["l_name"];
                 </div>
             </div>
             <div class="right-nav">
-                <div class="pro" onclick="location.href='fb-profile.html';"><img src="images/avatar.jpg" class="avatar">
+                <div class="pro" onclick="location.href='fb-profile.html';"><img src="<?php echo $pro_photo; ?>" class="avatar">
                     <p><?php echo $fname; ?></p>
                 </div>
                 <button onclick="location.href='./fb-clone.php';">
@@ -124,7 +125,7 @@ $lname = $row["l_name"];
 
                     <div class="modal-options">
                         <button onclick="location.href='fb-profile.html';">
-                            <img src="images/avatar.jpg" alt="" class="avatar">
+                            <img src="<?php echo $pro_photo; ?>" alt="" class="avatar">
                             <div class="text">
                                 <h3><b><?php echo $fname . " " . $lname; ?></b></h3>
                                 <p>See your profile.</p>
@@ -240,7 +241,7 @@ $lname = $row["l_name"];
             while ($rowfriend = mysqli_fetch_array($resultfriend)) {
                 $uid = $rowfriend["id"];
                 $uname = $rowfriend["f_name"] . " " . $rowfriend["l_name"];
-
+                $uphoto = $rowfriend["profile_photo"];
 
                 $sqlpeople = "SELECT * FROM users INNER JOIN friends ON users.id = friends.id WHERE friends.friend_id = $id AND friends.id = $uid";
                 $resultpeople = mysqli_query($con, $sqlpeople);
@@ -255,7 +256,7 @@ $lname = $row["l_name"];
             ?>
 
                     <div class="people">
-                        <img src="images/avatar.jpg" class="avatar">
+                        <img src="<?php echo $uphoto; ?>" class="avatar">
                         <h4><?php echo $uname; ?></h4>
                         <button disabled onclick="location.href='friend_rqst.php?uid=<?php echo $uid; ?>';" style="background-color: darkblue;">Friend</button>
                     </div>

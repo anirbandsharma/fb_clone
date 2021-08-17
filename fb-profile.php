@@ -12,6 +12,7 @@ $row = mysqli_fetch_array($sql);
 $id = $row["id"];
 $fname = $row["f_name"];
 $lname = $row["l_name"];
+$pro_photo = $row["profile_photo"];
 
 // get profile user
 $uid = $_GET["uid"];
@@ -19,6 +20,12 @@ $sqluser = mysqli_query($con, "SELECT * FROM users WHERE id='$uid'");
 $rowuser = mysqli_fetch_array($sqluser);
 $userfname = $rowuser["f_name"];
 $userlname = $rowuser["l_name"];
+$user_pro_photo = $rowuser["profile_photo"];
+$cover_photo = $rowuser["cover_photo"];
+$bio = $rowuser["bio"];
+$work = $rowuser["work"];
+$relationship = $rowuser["relationship"];
+$contact = $rowuser["contact"];
 
 ?>
 
@@ -67,7 +74,8 @@ $userlname = $rowuser["l_name"];
                 </div>
             </div>
             <div class="right-nav">
-                <div class="pro" onclick="location.href='fb-myprofile.php';"><img src="images/avatar.jpg" class="avatar">
+                <div class="pro" onclick="location.href='fb-myprofile.php';">
+                <img src="<?php echo $pro_photo; ?>" class="avatar">
                     <p><?php echo $fname; ?></p>
                 </div>
                 <button>
@@ -91,9 +99,9 @@ $userlname = $rowuser["l_name"];
             <div id="myModal" class="modal">
                 <div class="modal-content">
 
-                    <div class="modal-options">
+                <div class="modal-options">
                         <button onclick="location.href='fb-myprofile.php';">
-                            <img src="images/avatar.jpg" alt="" class="avatar">
+                            <img src="<?php echo $pro_photo; ?>" alt="" class="avatar">
                             <div class="text">
                                 <h3><b><?php echo $fname . " " . $lname; ?></b></h3>
                                 <p>See your profile.</p>
@@ -197,14 +205,14 @@ $userlname = $rowuser["l_name"];
     </nav>
 
     <div class="header">
-        <div class="cover-photo">
-            <img src="images/android-post.jpeg" alt="">
+    <div class="cover-photo">
+            <img src="<?php echo $cover_photo; ?>" alt="">
         </div>
         <div class="head-profile">
-            <img src="images/avatar.jpg" alt="">
+            <img src="<?php echo $user_pro_photo; ?>" alt="">
         <div class="name">
             <h1><?php echo $userfname.' '.$userlname ; ?></h1>
-            <p>user_bio_variable</p>
+            <p style="color: rgb(16, 86, 190);"><?php echo $bio; ?></p>
         </div>
     </div>
     <div class="header-line"></div>
@@ -230,11 +238,11 @@ $userlname = $rowuser["l_name"];
     <div class="profile-body">
         <div class="profile-left">
             <div class="left-card">
-                <h3>Intro</h3>
+            <h3>Intro</h3>
                 <p>From <b>location_variable</b></p>
-                <p>Work: <b>job_variable</b></p>
-                <p>Relationship: <b>relationship_variable</b></p>
-                <p>Contact <b>Contact_variable</b></p>
+                <p>Work: <b><?php echo $work; ?></b></p>
+                <p>Relationship: <b><?php echo $relationship; ?></b></p>
+                <p>Contact <b><?php echo $contact; ?></b></p>
             </div>
 
             <div class="left-card">

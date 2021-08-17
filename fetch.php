@@ -19,6 +19,7 @@ if (isset($_POST['msg_id'])) {
     while ($row = mysqli_fetch_array($result)) {
 
         $userid = $row["id"];
+        $userphoto = $row["profile_photo"];
         $post_id = $row["post_id"];
         $name = $row["f_name"] . " " . $row["l_name"];
         $post_detail = $row["post_detail"];
@@ -40,7 +41,7 @@ if (isset($_POST['msg_id'])) {
 
         <div class="feed-card" data-id="<?php echo $msgID; ?>">
             <div class="feed-card-title" onclick="location.href='fb-profile.php?uid=<?php echo $userid; ?>';">
-                <img src="images/android.jpeg" alt="" class="avatar">
+                <img src="<?php echo $userphoto; ?>" alt="" class="avatar">
                 <div class="name">
                     <h4><?php echo $name; ?> </h4>
                     <p><?php echo $time; ?> </p>
