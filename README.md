@@ -1,6 +1,9 @@
 # fb_clone
 
-facebook clone with html and css and javascript (not responsive - yet)
+Live Demo : http://fbclone.great-site.net/
+
+facebook clone with html and core css and javascript with php and mysql 
+(not fully responsive - yet)
 
 includes:
 
@@ -10,3 +13,5 @@ includes:
 -dark mode
 -photo/video upload
 -comments
+-friend requests
+-cloned profile pages
